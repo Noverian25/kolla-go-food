@@ -1,11 +1,10 @@
 class LineItemsController < ApplicationController
-  
   include CurrentCart
   before_action :set_cart, only: [:create]
 
   def create
     food = Food.find(params[:food_id])
-    @line_item = @cart.line_items.build(food: food)
+    @line_item = @cart.add_food(food)
 
     respond_to do |format|
       if @line_item.save
