@@ -2,6 +2,10 @@ require 'rails_helper'
 
 describe Food do
 
+  it "has a valid factory" do
+    expect(FactoryGirl.build(:food)).to be_valid
+  end
+  
   it "is valid with a name and description" do
     expect(FactoryGirl.build(:food)).to be_valid
   end
@@ -178,8 +182,6 @@ describe Food do
     end
   end
 
-  it "has a valid factory" do
-    expect(FactoryGirl.build(:food)).to be_valid
-  end
+
 
 end
