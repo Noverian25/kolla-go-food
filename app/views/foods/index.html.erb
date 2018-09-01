@@ -38,12 +38,26 @@
           <dd><%= truncate(strip_tags(food.description), length: 80) %></dd>
         </dl>
       </td>
+
       <td class="list_actions">
         <%= link_to 'Show', food %><br/>
         <%= link_to 'Edit', edit_food_path(food) %><br/>
-        <%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?'
+        <%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %>
       </td>
     </tr>
+  <% end %>
+
+  <% @foods.each do |food| %>
+    <div class="entry">
+      <%= image_tag(food.image_url) %> 
+      <h3><%= food.name %></h3>
+      <%= sanitize(food.description) %>
+      <div class="price_line">
+        <span class="price">
+          <%= number_to_currency(food.price, unit: "Rp ", delimiter: ".", separator: ",") %>    
+        </span>
+      </div>
+    </div>
   <% end %>
 </table>
 
